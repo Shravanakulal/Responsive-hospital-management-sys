@@ -272,6 +272,10 @@ section:nth-child(even){
 }
 
 
+.doctors {
+    margin-top: 120px;
+}
+
 .doctors .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -281,7 +285,7 @@ section:nth-child(even){
 .doctors .box-container .box{
     text-align: center;
     background:#fff;
-    border-radius: .5rem;
+    border-radius: .3rem;
     border:var(--border);
     box-shadow: var(--box-shadow);
     padding:2rem;
@@ -306,14 +310,14 @@ section:nth-child(even){
 }
 
 .doctors .box-container .box .share{
-    padding-top: 2rem;
+    padding-top: 0.5rem;
 }
 
 .doctors .box-container .box .share a{
-    height: 5rem;
-    width: 5rem;
-    line-height: 4.5rem;
-    font-size: 2rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    line-height: 3rem;
+    font-size: 1rem;
     color:var(--pink);
     border-radius: .5rem;
     border:var(--border);
