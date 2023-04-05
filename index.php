@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
    $branch = $_POST['branch'];
    $doctors = $_POST['doctors'];
 
-   $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date ,branch,doctors) VALUES('$name','$email','$number','$date','$branch,'$doctors')") or die('query failed');
+   $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date,branch,doctors) VALUES('$name','$email','$number','$date','$branch','$doctors')") or die('query failed');
 
    if($insert){
       $message[] = 'appointment made successfully!';
@@ -19,14 +19,18 @@ if(isset($_POST['submit'])){
       $message[] = 'appointment failed';
    }
 
+
 }
+
+   
+
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>complete responsive hospital website create by win coder</title>
+    <title>DIGI DOC</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
@@ -136,32 +140,38 @@ if(isset($_POST['submit'])){
             <img src="image/appointment-img.svg" alt="">
         </div>
 
-        <form action="confirm.html" method="post">
-      
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+       
             <h3>make appointment</h3>
             <input type="text"name="name" placeholder="your name" class="box">
             <input type="number"name="number" placeholder="your number" class="box">
             <input type="email"name="email" placeholder="your email" class="box">
             <input type="date"name="date" class="box">
-            <select name="branch"class="box">
-                <option value = "HSR">HSR LAYOUT</option>
+
+            <select name="branch" class="box">
+                 <option value = "HSR">HSR LAYOUT</option>
                 <option value = "BTM">BTM LAYOUT</option>
                 <option value = "KLG">KUDLU GATE</option>
             </select>
             <select name = "doctors" class = "box">
-                <option value = "Dr.Rajesh">Dr. Rajesh</option>
-                <option value = "Dr. Shilpa">Dr.Shilpa</option>
-                <option value = "Dr. Saanvi">Dr.Saanvi</option>
+                <option value = "Dr Rajesh">Dr. Rajesh</option>
+                <option value = "Dr Shilpa">Dr.Shilpa</option>
+                <option value = "Dr Saanvi">Dr.Saanvi</option>
             </select>
+           <input type="submit" name="submit" value="appointment now" class="btn" id="submit" onclick="show_alert();" >
             
             
-            <input type="submit" name="submit" value="appointment now" class="btn" >
+
             
+            
+              
+
+            
+
+
+</form>
 
 </div>
-        </form>
-
-    </div>
 
 </section>
 
