@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
+$conn = mysqli_connect('localhost:3307','root','','contact_db') or die('connection failed');
 
 if(isset($_POST['submit'])){
 
@@ -9,9 +9,9 @@ if(isset($_POST['submit'])){
    $number = $_POST['number'];
    $date = $_POST['date'];
    $branch = $_POST['branch'];
-   $doctor = $_POST['status'];
+   $doctors = $_POST['doctors'];
 
-   $insert = mysqli_query($conn, "INSERT INTO contact_form(name, email, number, date ,branch ,doctor ) VALUES('$name','$email','$number','$date','$branch','$doctor')") or die('query failed');
+   $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date,branch,doctors) VALUES('$name','$email','$number','$date','$branch','$doctors')") or die('query failed');
 
    if($insert){
       $message[] = 'appointment made successfully!';
@@ -19,14 +19,18 @@ if(isset($_POST['submit'])){
       $message[] = 'appointment failed';
    }
 
+
 }
+
+   
+
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>complete responsive hospital website create by win coder</title>
+    <title>DIGI DOC</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
@@ -128,7 +132,7 @@ if(isset($_POST['submit'])){
 
 <section class="appointment" id="appointment">
 
-    <h1 class="heading"> <span>appointment</span> now </h1>    
+    <h1 class="heading"> <span>Appointment</span> Now </h1>    
 
     <div class="row">
 
@@ -136,63 +140,37 @@ if(isset($_POST['submit'])){
             <img src="image/appointment-img.svg" alt="">
         </div>
 
-        <form action="confirm.php">
-      
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+       
             <h3>make appointment</h3>
             <input type="text"name="name" placeholder="your name" class="box">
             <input type="number"name="number" placeholder="your number" class="box">
             <input type="email"name="email" placeholder="your email" class="box">
             <input type="date"name="date" class="box">
-            <select id="branch" name="branch" class="box" onchange="dynamicdropdown(this.options[this.selectedIndex].value);">
-                <option>select branch</option>
-                <option value = "HSR" >HSR LAYOUT</option>
-                <option value = "BTM" >BTM LAYOUT</option>
-                <option value = "KLG" >KUDLU GATE</option>
+
+            <select id="branch" name="branch"class="box" onchange="dynamicdropdown(this.options[this.selectedIndex].value);">
+                <option>Select Branch</option>
+                <option value = "HSR">HSR LAYOUT</option>
+                <option value = "BTM">BTM LAYOUT</option>
+                <option value = "KLG">KUDLU GATE</option>
             </select>
-            <select id="doctor" name = "doctor" class = "box" >
-            <option>select doctor</option>
+            <select id="status" name = "doctor" class = "box" >
+                <option>Select Doctor</option>
             </select>
-            <input type="submit" name="submit" value="appointment now" class="btn" >
-            
+           <input type="submit" name="submit" value="appointment now" class="btn" id="submit" onclick="show_alert();" >
+
+</form>
 
 </div>
-        </form>
-
-    </div>
 
 </section>
 
-<!-- home section ends -->
-
-<!-- icons section starts  -->
-
-
-
-
-
-<!-- doctors section ends -->
-
-
-<!-- services section ends -->
-
-
-
-
-
-<!-- appointmenting section starts   -->
-
-
-<!-- blogs section ends -->
-
-<!-- footer section starts  -->
-<!-- footer section ends -->
 <section class ="footer">
 <div class ="box">
 
 <div class = "credit"> created by <span>4 FIRE </span></div>
 
 </section>
-<!-- js file link  -->
 <script src="script.js"></script>
 
 </body>
